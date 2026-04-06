@@ -29,22 +29,22 @@ mkdir ~/github
 
 # Descargar Repositorios Necesarios
 
-cd ~/github
+cd ~/github || exit
 git clone --recursive https://github.com/polybar/polybar
 git clone https://github.com/ibhagwan/picom.git
 
 # Instalando Polybar
 
-cd ~/github/polybar
+cd ~/github/polybar || exit
 mkdir build
-cd build
+cd build || exit
 cmake ..
-make -j$(nproc)
+make -j"$(nproc)"
 sudo make install
 
 # Instalando Picom
 
-cd ~/github/picom
+cd ~/github/picom || exit
 git submodule update --init --recursive
 meson --buildtype=release . build
 ninja -C build
@@ -62,50 +62,50 @@ sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/.pow
 # Configuramos el tema Nord de Rofi:
 
 mkdir -p ~/.config/rofi/themes
-cp $ruta/configs/rofi/nord.rasi ~/.config/rofi/themes/
-cp $ruta/configs/rofi/rounded-common.rasi ~/.config/rofi/themes/
-cp $ruta/configs/rofi/rounded-purple-dark.rasi ~/.config/rofi/themes/
+cp "$ruta"/configs/rofi/nord.rasi ~/.config/rofi/themes/
+cp "$ruta"/configs/rofi/rounded-common.rasi ~/.config/rofi/themes/
+cp "$ruta"/configs/rofi/rounded-purple-dark.rasi ~/.config/rofi/themes/
 
 # Instando lsd
 
-sudo dpkg -i $ruta/data/packages/lsd.deb
+sudo dpkg -i "$ruta"/data/packages/lsd.deb
 
 # Instalamos las HackNerdFonts
 
-sudo cp -v $ruta/data/fonts/HNF/* /usr/local/share/fonts/
+sudo cp -v "$ruta"/data/fonts/HNF/* /usr/local/share/fonts/
 
 # Instalando Fuentes de Polybar
 
-sudo cp -v $ruta/configs/Config/polybar/fonts/* /usr/share/fonts/truetype/
+sudo cp -v "$ruta"/configs/Config/polybar/fonts/* /usr/share/fonts/truetype/
 
 # Instalando Wallpaper
 
 mkdir ~/Wallpaper
-cp -v $ruta/data/wallpapers/Wallpaper/* ~/Wallpaper
+cp -v "$ruta"/data/wallpapers/Wallpaper/* ~/Wallpaper
 mkdir ~/ScreenShots
 
 # Copiando Archivos de Configuración
 
 rm -r ~/.config/polybar
-cp -rv $ruta/configs/Config/* ~/.config/
-sudo cp -rv $ruta/configs/kitty /opt/
+cp -rv "$ruta"/configs/Config/* ~/.config/
+sudo cp -rv "$ruta"/configs/kitty /opt/
 
 # Kitty Root
 
-sudo cp -rv $ruta/configs/Config/kitty /root/.config/
+sudo cp -rv "$ruta"/configs/Config/kitty /root/.config/
 
 # Copia de configuracion de .p10k.zsh y .zshrc
 
 rm -rf ~/.zshrc
-cp -v $ruta/configs/zsh/.zshrc ~/.zshrc
+cp -v "$ruta"/configs/zsh/.zshrc ~/.zshrc
 
-cp -v $ruta/configs/zsh/.p10k.zsh ~/.p10k.zsh
-sudo cp -v $ruta/configs/zsh/.p10k.zsh-root /root/.p10k.zsh
+cp -v "$ruta"/configs/zsh/.p10k.zsh ~/.p10k.zsh
+sudo cp -v "$ruta"/configs/zsh/.p10k.zsh-root /root/.p10k.zsh
 
 # Script
 
-sudo cp -v $ruta/scripts/whichSystem.py /usr/local/bin/
-sudo cp -v $ruta/scripts/screenshot /usr/local/bin/
+sudo cp -v "$ruta"/scripts/whichSystem.py /usr/local/bin/
+sudo cp -v "$ruta"/scripts/screenshot /usr/local/bin/
 
 # Instalamos Net-tools
 sudo apt install net-tools
@@ -114,13 +114,13 @@ sudo apt install net-tools
 
 sudo apt install -y zsh-syntax-highlighting zsh-autosuggestions
 sudo mkdir /usr/share/zsh-sudo
-cd /usr/share/zsh-sudo
+cd /usr/share/zsh-sudo || exit
 sudo wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/plugins/sudo/sudo.plugin.zsh
 
 # Cambiando de SHELL a zsh
 
 sudo ln -s -fv ~/.zshrc /root/.zshrc
-usermod --shell /usr/bin/zsh $usuario
+usermod --shell /usr/bin/zsh "$usuario"
 usermod --shell /usr/bin/zsh root
 
 # Asignamos Permisos a los Scritps
@@ -144,7 +144,7 @@ rofi-theme-selector
 # Removiendo Repositorio
 
 rm -rf ~/github
-rm -rfv $ruta
+rm -rfv "$ruta"
 
 # Mensaje de Instalado
 
