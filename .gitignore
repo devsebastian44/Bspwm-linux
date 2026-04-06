@@ -1,0 +1,32 @@
+# DevSecOps .gitignore
+
+# Editor y SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs y Temporales
+*.log
+*.tmp
+*.bak
+*.swp
+*.out
+
+# Python (si se llega a usar scripts python en el futuro)
+__pycache__/
+*.pyc
+
+# Variables de entorno y secretos
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets.yaml
+
+# Artefactos y build (descargados)
+data/packages/*.deb
+*.tar.gz
+*.zip
+!data/packages/.gitkeep

@@ -62,45 +62,45 @@ sudo git clone --depth=1 https://github.com/romkatv/powerlevel10k.git /root/.pow
 # Configuramos el tema Nord de Rofi:
 
 mkdir -p ~/.config/rofi/themes
-cp $ruta/rofi/nord.rasi ~/.config/rofi/themes/
-cp $ruta/rofi/rounded-common.rasi ~/.config/rofi/themes/
-cp $ruta/rofi/rounded-purple-dark.rasi ~/.config/rofi/themes/
+cp $ruta/configs/rofi/nord.rasi ~/.config/rofi/themes/
+cp $ruta/configs/rofi/rounded-common.rasi ~/.config/rofi/themes/
+cp $ruta/configs/rofi/rounded-purple-dark.rasi ~/.config/rofi/themes/
 
 # Instando lsd
 
-sudo dpkg -i $ruta/lsd.deb
+sudo dpkg -i $ruta/data/packages/lsd.deb
 
 # Instalamos las HackNerdFonts
 
-sudo cp -v $ruta/fonts/HNF/* /usr/local/share/fonts/
+sudo cp -v $ruta/data/fonts/HNF/* /usr/local/share/fonts/
 
 # Instalando Fuentes de Polybar
 
-sudo cp -v $ruta/Config/polybar/fonts/* /usr/share/fonts/truetype/
+sudo cp -v $ruta/configs/Config/polybar/fonts/* /usr/share/fonts/truetype/
 
 # Instalando Wallpaper
 
 mkdir ~/Wallpaper
-cp -v $ruta/Wallpaper/* ~/Wallpaper
+cp -v $ruta/data/wallpapers/Wallpaper/* ~/Wallpaper
 mkdir ~/ScreenShots
 
 # Copiando Archivos de Configuración
 
 rm -r ~/.config/polybar
-cp -rv $ruta/Config/* ~/.config/
-sudo cp -rv $ruta/kitty /opt/
+cp -rv $ruta/configs/Config/* ~/.config/
+sudo cp -rv $ruta/configs/kitty /opt/
 
 # Kitty Root
 
-sudo cp -rv $ruta/Config/kitty /root/.config/
+sudo cp -rv $ruta/configs/Config/kitty /root/.config/
 
 # Copia de configuracion de .p10k.zsh y .zshrc
 
 rm -rf ~/.zshrc
-cp -v $ruta/.zshrc ~/.zshrc
+cp -v $ruta/configs/zsh/.zshrc ~/.zshrc
 
-cp -v $ruta/.p10k.zsh ~/.p10k.zsh
-sudo cp -v $ruta/.p10k.zsh-root /root/.p10k.zsh
+cp -v $ruta/configs/zsh/.p10k.zsh ~/.p10k.zsh
+sudo cp -v $ruta/configs/zsh/.p10k.zsh-root /root/.p10k.zsh
 
 # Script
 
