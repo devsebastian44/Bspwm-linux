@@ -31,8 +31,7 @@ Write-Host "[*] Generando versión pública sanitizada en rama 'public'..."
 git checkout -B public main
 
 # 5. Filtrado Dinámico de Seguridad (Removiendo componentes privados)
-Write-Host "[*] Removiendo componentes de laboratorio (Tests, CI, Configuraciones Reales)..." -ForegroundColor Cyan
-git rm -r --cached tests/ -f 2>$null
+Write-Host "[*] Removiendo componentes de laboratorio (CI, Configuraciones Reales)..." -ForegroundColor Cyan
 git rm --cached .gitlab-ci.yml -f 2>$null
 git rm --cached scripts/publish_public.ps1 -f 2>$null
 # (Opcional: Si quieres que el portafolio tenga los archivos base pero no las 'configs reales' privadas)
