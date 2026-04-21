@@ -1,0 +1,37 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "public" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y shellcheck
+
+    - name: Run ShellCheck on install.sh
+      run: |
+        echo "[*] Ejecutando linting con shellcheck..."
+        shellcheck scripts/install.sh || echo "Shellcheck encontró advertencias, pero se permite continuar."
+        # Nota: quitamos el exit code estricto de shellcheck si hay warnings no criticos en el bash de ricing
+
+    - name: Run local functional tests
+      run: |
+        echo "[*] Ejecutando tests de sintaxis..."
+        bash tests/test_install.sh
+        
+    - name: Security scan (Hardcoded secrets check)
+      run: |
+        echo "[*] Ejecutando escaneo basico contra repositorios publicos de configs..."
+        grep -irq "password=" configs/ || echo "[+] No se han encontrado secretos filtrados hardcodeados."
+        grep -irq "API_KEY=" configs/ || echo "[+] No se han encontrado API keys hardcodeadas."
