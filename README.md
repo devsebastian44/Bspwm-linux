@@ -195,6 +195,30 @@ Los atajos más frecuentes inferidos de la configuración típica de Bspwm + Sxh
 
 ---
 
+## 🧪 Tests
+
+El proyecto cuenta con pruebas locales para asegurar que el entorno puede validarse sin dependencias externas ni credenciales:
+
+```bash
+# Ejecutar verificación de sintaxis de scripts de forma segura
+bash tests/test_install.sh
+```
+
+Esto ejecutará una prueba "seca" (dry-run) sobre los archivos principales para confirmar su validez antes de hacer modificaciones en el entorno real.
+
+---
+
+## 🤝 Contributing
+
+¡Las contribuciones son bienvenidas para mejorar este portafolio y entorno! Para mantener un código de calidad:
+
+1. Realiza un **Fork** del repositorio.
+2. Clona tu fork y prueba el código localmente sin acceso externo (usa mocks si añades funcionalidades).
+3. Revisa la guía completa en [CONTRIBUTING.md](CONTRIBUTING.md) para detalles sobre pull requests, ejecución local y configuración del `.env.example`.
+4. El repositorio cuenta con un pipeline de **CI/CD en GitHub Actions** que validará automáticamente la instalación, pruebas y el linting de tus Pull Requests.
+
+---
+
 ## 📁 Project Structure
 
 ```
