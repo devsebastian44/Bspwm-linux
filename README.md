@@ -5,6 +5,7 @@
 ![Shell](https://img.shields.io/badge/Shell-Bash%20%2F%20Zsh-4EAA25?style=flat&logo=gnubash&logoColor=white)
 ![Rofi](https://img.shields.io/badge/Launcher-Rofi-blueviolet?style=flat&logo=linux&logoColor=white)
 ![Picom](https://img.shields.io/badge/Compositor-Picom-informational?style=flat&logo=linux&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?style=flat&logo=github-actions&logoColor=white)
 ![License](https://img.shields.io/badge/License-GPL--3.0-red?style=flat&logo=gnu&logoColor=white)
 
 ![Bspwm Desktop Preview](data/wallpapers/Fondo.png)
@@ -12,6 +13,9 @@
 ---
 
 ## 🧠 Overview
+
+> **IMPORTANT:** This project is for educational and ethical cybersecurity purposes only.
+
 
 Este repositorio es una colección completa de **dotfiles y scripts de automatización
 de post-instalación** para un entorno de escritorio Linux basado en **Bspwm**, el
@@ -58,8 +62,6 @@ lanzador de aplicaciones, **Picom** como compositor con efectos visuales, y
   del aspecto final del escritorio.
 - **Documentación de atajos** en `docs/commands.md` con referencia completa
   del flujo de trabajo en Bspwm.
-- **Estrategia DevSecOps de doble repositorio** con publicación sanitizada
-  automatizada a GitHub via `publish_public.ps1`.
 
 ---
 
@@ -75,7 +77,6 @@ lanzador de aplicaciones, **Picom** como compositor con efectos visuales, y
 | Terminal | **Kitty** | Emulador de terminal GPU-acelerado |
 | Shell | **Zsh** | Shell interactivo con configuración personalizada |
 | Scripting | **Bash / Shell** | Scripts de instalación y automatización |
-| Publicación | **PowerShell** | Sanitización y sincronización a GitHub |
 | Licencia | GPL-3.0 | Copyleft — libre redistribución y modificación |
 
 ---
@@ -88,10 +89,10 @@ lanzador de aplicaciones, **Picom** como compositor con efectos visuales, y
 - Paquetes base: `bspwm`, `sxhkd`, `polybar`, `rofi`, `picom`, `kitty`, `zsh`
 - Git instalado en el sistema
 
-### 1. Clonar el repositorio completo (desde GitLab)
+### 1. Clonar el repositorio completo
 
 ```bash
-git clone https://gitlab.com/group-programming-lab/Bspwm-linux.git
+git clone https://github.com/devsebastian44/Bspwm-linux.git
 cd Bspwm-linux
 ```
 
@@ -186,13 +187,6 @@ Los atajos más frecuentes inferidos de la configuración típica de Bspwm + Sxh
 | Recargar Sxhkd | `Super + Escape` |
 | Recargar configuración Bspwm | `Super + Shift + r` |
 
-### Publicar versión sanitizada a GitHub (DevSecOps)
-
-```powershell
-# Desde PowerShell (entorno de desarrollo)
-.\publish_public.ps1
-```
-
 ---
 
 ## 🧪 Tests
@@ -249,8 +243,6 @@ Bspwm-linux/
 ├── scripts/
 │   └── install.sh               # Orquestador de instalación automatizada del entorno
 │
-├── publish_public.ps1           # Script PowerShell de sanitización y push a GitHub
-│
 ├── .gitignore                   # Excluye: logs, .env, *.pem, *.key, paquetes binarios
 ├── LICENSE                      # GNU General Public License v3.0
 └── README.md                    # Documentación principal del proyecto
@@ -276,36 +268,9 @@ proyecto sigue principios de **mínimo privilegio** y **auditoría del código**
 - **Sin paquetes binarios:** Los archivos `*.deb`, `*.tar.gz` y `*.zip` están
   excluidos del repositorio mediante `.gitignore`, manteniendo el repo limpio y
   auditables solo los archivos de configuración de texto plano.
-- **Arquitectura DevSecOps dual:** El script `publish_public.ps1` garantiza
-  que el repositorio público en GitHub nunca contenga configuraciones sensibles
-  ni artefactos de CI/CD internos del laboratorio GitLab.
 
 ---
 
-## 🌐 Repository Architecture
-
-Este proyecto sigue una arquitectura distribuida de doble repositorio, separando
-el entorno de desarrollo activo del portafolio público:
-
-**GitHub** actúa como espejo sanitizado del entorno — contiene los dotfiles
-públicos, la documentación, los diagramas y el wallpaper de referencia,
-orientado a la presentación del portafolio técnico.
-
-**GitLab** es la fuente de verdad y laboratorio de desarrollo completo:
-contiene el entorno íntegro con scripts de CI/CD, batería de tests de
-integridad estructural, configuraciones locales del host y toda la lógica
-de automatización interna. El desarrollo diario ocurre exclusivamente aquí.
-
-La sincronización entre entornos está gobernada por `publish_public.ps1`,
-que crea una rama temporal sanitizada, elimina artefactos sensibles y hace
-push hacia GitHub de forma controlada y auditable.
-
-### 🔗 Full Source Code
-
-👉 Código completo disponible en GitLab:
-[https://gitlab.com/group-programming-lab/Bspwm-linux](https://gitlab.com/group-programming-lab/Bspwm-linux)
-
----
 
 ## 🚀 Roadmap
 
@@ -325,7 +290,7 @@ Mejoras sugeridas a partir de la arquitectura y herramientas detectadas:
 - **Soporte Wayland:** Migración experimental del entorno a
   **Hyprland/Sway** como alternativa a Bspwm en Wayland, manteniendo la
   misma filosofía de configuración modular.
-- **Tests de integridad en CI/CD:** Expandir la batería de tests en GitLab
+- **Tests de integridad en CI/CD:** Expandir la batería de tests en GitHub Actions
   para validar la sintaxis de `bspwmrc`, `sxhkdrc` y scripts Bash con
   `shellcheck` en cada push.
 - **Gestión de múltiples perfiles:** Sistema de perfiles intercambiables
@@ -357,10 +322,6 @@ Copyright © 2025 **Sebastián Zhunaula** (devsebastian44)
       <sub>Full-Stack Developer · Linux Enthusiast · DevSecOps</sub><br/><br/>
       <a href="https://github.com/devsebastian44">
         <img src="https://img.shields.io/badge/GitHub-devsebastian44-black?style=flat&logo=github" />
-      </a>
-      <br/>
-      <a href="https://gitlab.com/group-programming-lab">
-        <img src="https://img.shields.io/badge/GitLab-group--programming--lab-FC6D26?style=flat&logo=gitlab" />
       </a>
     </td>
   </tr>
